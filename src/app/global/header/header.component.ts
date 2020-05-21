@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'header-section',
   template: `
     <header>
-      <section class="main-header-wrapper">
+      <section class="header-wrapper">
         <div>
           <img class="logo" src="https://www.torryharris.com/images/this/this_logo_innerpages.svg" placeholder="Logo" height="30px" >
         </div>

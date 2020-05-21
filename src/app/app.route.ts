@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { TicketSection } from './ticket/ticket.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 export const appRoutes: Routes = [
-  { path: 'ticket', component: TicketSection },
+  { path: 'ticket', component: TicketComponent },
   { path: '', redirectTo: 'ticket', pathMatch: 'full' }
 ]
