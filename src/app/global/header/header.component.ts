@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
     <header>
       <section class="header-wrapper">
         <div>
-          <img class="logo" src="https://www.torryharris.com/images/this/this_logo_innerpages.svg" placeholder="Logo" height="30px" >
+          <img class="logo" src="https://deplomatic-ui.s3.amazonaws.com/assets/logo/mySandbox_logo_dark_bg.svg" placeholder="Logo" height="30px" >
         </div>
         <nav class="nav-links">
-          <a href="#Home">Home</a>
-          <a href="#Contact Us">Contact Us</a>
-          <a href="#About">Logout</a>
+          <a href="#Ticket">Tickets</a>
+          <a href="#Approval">Approvals</a>
+          <a href="#Environment">Environments</a>
         </nav>
       </section>
     </header>
