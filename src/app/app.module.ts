@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularMaterial } from './angular.material';
 import { appRoutes } from './app.route';
+import { TicketService } from './service/ticket.service';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './global/footer/footer.component';
@@ -20,6 +21,7 @@ import { TicketComponent } from './ticket/ticket.component';
   declarations: [
     AppComponent, FooterComponent, HeaderComponent, TicketComponent
   ],
+  providers: [ TicketService ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
