@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { Ticket } from '../service/ticket.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 
 @Component({
   selector: 'ticket-component',
@@ -15,13 +16,15 @@ export class TicketComponent implements OnInit {
   tickets : Ticket[] = [];
 
   ngOnInit(): void {
-     this.rs.getTicket().subscribe
-     (
-       (response)=>
-       {
-         this.tickets = response;
-       },
-       (error) => console.log(error)
-     )
-   }
+     this.rs.getTicket().subscribe((response)=> {this.tickets = response;},(error) => console.log(error))
+  }
+  
 }
+
+/*@Component({
+  selector: 'add-ticket-section',
+  templateUrl: 'add.ticket.html',
+})
+export class AddTicket {
+
+} */
