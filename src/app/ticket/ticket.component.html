@@ -1,5 +1,18 @@
 <header-section></header-section>
-<p>
-  ticket
-</p>
+
+<h1>Raised Tickets</h1>
+<hr>
+<table id="tickets">
+  <tr>
+    <th *ngFor="let col of columns">
+      {{col}}
+    </th>
+  </tr>
+  <tr *ngFor="let ticket of tickets">
+    <td *ngFor="let col of index">
+      {{ticket[col]}}
+    </td>
+  </tr>
+</table>
+
 <footer-section></footer-section>
