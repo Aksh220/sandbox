@@ -1,7 +1,7 @@
 <header-section></header-section>
 
 <h1>Raised Tickets</h1>
-<table id="tickets">
+<table mat-table [Ticket]="Ticket" id="tickets">
   <ng-container matColumnDef="heading">
     <th *ngFor="let col of columns">
       {{col}}
