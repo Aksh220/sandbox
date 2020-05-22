@@ -2,17 +2,26 @@
 
 <h1>Raised Tickets</h1>
 <table id="tickets">
-  <tr>
+  <ng-container matColumnDef="heading">
     <th *ngFor="let col of columns">
       {{col}}
-    </th>
-  </tr>
+    </th>  
+  </ng-container>
+  <ng-container matColumnDef="data">
   <tr *ngFor="let ticket of tickets">
     <td *ngFor="let col of index">
       {{ticket[col]}}
     </td>
   </tr>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element" class="action-link"> 
+      <a (click)="openDialog('Update',element)">Edit</a> | 
+      <a (click)="openDialog('Delete',element)">Delete</a>  
+    </td>
+  </ng-container>
 </table>
-
+<button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Row</button>
 
 <footer-section></footer-section>

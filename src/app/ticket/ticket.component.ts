@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { Ticket } from '../service/ticket.service';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog, MatTable } from '@angular/material';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 
 @Component({
   selector: 'ticket-component',
