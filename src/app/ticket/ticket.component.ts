@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, Inject, Optional } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { Ticket } from '../service/ticket.service';
-import { MatDialog, MatTable, MatDialogRef } from '@angular/material';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {  MatTable } from '@angular/material/table';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'ticket-component',
@@ -49,7 +49,7 @@ export class TicketComponent implements OnInit {
     
   }
   updateRowData(row_obj){
-    this.dataSource = this.tickets.filter((value,key)=>{
+    this.tickets = this.tickets.filter((value,key)=>{
       if(value.ticketId == row_obj.ticketId){
         value.ticketOwner = row_obj.ticketOwner;
         value. ticketSubject = row_obj. ticketSubject;
@@ -59,8 +59,8 @@ export class TicketComponent implements OnInit {
     });
   }
   deleteRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      return value.id != row_obj.id;
+    this.tickets = this.tickets.filter((value,key)=>{
+      return value.ticketId != row_obj.ticketId;
     });
   }  
 }
