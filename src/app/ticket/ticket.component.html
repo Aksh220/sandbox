@@ -1,5 +1,4 @@
 <header-section></header-section>
-
 <h1>Raised Tickets</h1>
 <table  id="tickets">
   <ng-container matColumnDef="heading">
@@ -14,14 +13,16 @@
     </td>
   </tr>
   </ng-container>
-  <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
-    <td mat-cell *matCellDef="let element" class="action-link"> 
-      <a (click)="openDialog('Update',element)">Edit</a> | 
-      <a (click)="openDialog('Delete',element)">Delete</a>  
-    </td>
-  </ng-container>
-</table>
-<button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Row</button>
+  
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td *ngFor="let row of columns" class="action-link"> 
+        <a (click)="openDialog('Update',row)">Edit</a> | 
+        <a (click)="openDialog('Delete',row)">Delete</a>  
+      </td>
+    </ng-container>
 
+</table>
+
+<button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Row</button>
 <footer-section></footer-section>
