@@ -9,7 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   templateUrl: 'ticket.component.html'
 })
 export class TicketComponent implements OnInit {
-  constructor(private rs : TicketService, public dialog: MatDialog) { }
+  constructor(private ticketService : TicketService, public dialog: MatDialog) { }
 
   columns = ["Ticket Id","Ticket Owner","Ticket Subject", "Ticket Message"];
   index = ["support_ticket_id", "userId", "ticket_subject", "ticket_description"];
@@ -17,13 +17,13 @@ export class TicketComponent implements OnInit {
   tickets : Ticket[] = [];
 
   ngOnInit(): void {
-     this.rs.getTicket().subscribe((response)=> {this.tickets = response;},(error) => console.log(error))
+     this.ticketService.getTicket().subscribe((response)=> {this.tickets = response;},(error) => console.log(error))
   }
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   openDialog(action,obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '250px',
+      width: '500px',
       data:obj
     });
 
@@ -71,17 +71,17 @@ export class TicketComponent implements OnInit {
 })
 export class DialogBoxComponent {
   action:string;
-  local_data:any;
+  tickets:any;
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Ticket) {
     console.log(data);
-    this.local_data = {...data};
-    this.action = this.local_data.action;
+    this.tickets = {...data};
+    this.action = this.tickets.action;
   }
   doAction(){
-    this.dialogRef.close({event:this.action,data:this.local_data});
+    this.dialogRef.close({event:this.action,data:this.tickets});
   }
   closeDialog(){
     this.dialogRef.close({event:'Cancel'});
