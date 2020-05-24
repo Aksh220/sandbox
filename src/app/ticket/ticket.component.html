@@ -11,12 +11,10 @@
     <td *ngFor="let col of index">
       {{ticket[col]}}
     </td>
-    <button (click)="openDialog('Update',{})">Edit</button> | 
-    <button (click)="openDialog('Delete',{})">Delete</button>
+    <button (click)="openDialog('Update',ticket)">Edit</button> |
+    <button (click)="openDialog('Delete',ticket)">Delete</button>
   </tr>
-  </ng-container> 
-  
+  </ng-container>   
 </table>
-
 <button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Row</button>
 <footer-section></footer-section>
