@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export interface Ticket {
-  ticketId: number,
-  ticketOwner: string,
-  ticketSubject: string,
-  ticketMessage:string
+  support_ticket_id: number,
+  userId: string,
+  ticket_subject: string,
+  ticket_description:string
 }
 
 @Injectable({

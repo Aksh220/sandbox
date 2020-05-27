@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, Inject, Optional } from '@angular/core';
 import { TicketService } from '../service/ticket.service';
 import { Ticket } from '../service/ticket.service';
-import {  MatTable } from '@angular/material/table';
+import {  MatTable, MatTableDataSource } from '@angular/material/table';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { isDataSource } from '@angular/cdk/collections';
 
 @Component({
   selector: 'ticket-component',
@@ -11,13 +12,12 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class TicketComponent implements OnInit {
   constructor(private ticketService : TicketService, public dialog: MatDialog) { }
 
-  columns = ["Ticket Id","Ticket Owner","Ticket Subject", "Ticket Message"];
-  index = ["support_ticket_id", "userId", "ticket_subject", "ticket_description"];
+  public columns = ["support_ticket_id", "userId", "ticket_subject", "ticket_description", "action"];
 
   tickets : Ticket[] = [];
 
   ngOnInit(): void {
-     this.ticketService.getTicket().subscribe((response)=> {this.tickets = response;},(error) => console.log(error))
+     this.ticketService.getTicket().subscribe((response)=> {this.tickets = response as Ticket[];},(error) => console.log(error))
   }
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   openDialog(action,obj) {
@@ -40,27 +40,27 @@ export class TicketComponent implements OnInit {
   addRowData(row_obj){
     var d = new Date();
     this.tickets.push({
-      ticketId:d.getTime(),
-      ticketOwner:row_obj.ticketOwner,
-      ticketSubject:row_obj.ticketSubject,
-      ticketMessage:row_obj.ticketMessage
+      support_ticket_id:d.getTime(),
+      userId:row_obj.userId,
+      ticket_subject:row_obj.ticket_subject,
+      ticket_description:row_obj.ticket_description
     });
     this.table.renderRows();
     
   }
   updateRowData(row_obj){
     this.tickets = this.tickets.filter((value,key)=>{
-      if(value.ticketId == row_obj.ticketId){
-        value.ticketOwner = row_obj.ticketOwner;
-        value. ticketSubject = row_obj. ticketSubject;
-        value.ticketMessage = row_obj.ticketMessage;
+      if(value.support_ticket_id == row_obj.support_ticket_id){
+        value.userId = row_obj.userId;
+        value. ticket_subject = row_obj. ticket_subject;
+        value.ticket_description = row_obj.ticket_description;
       }
       return true;
     });
   }
   deleteRowData(row_obj){
     this.tickets = this.tickets.filter((value,key)=>{
-      return value.ticketId != row_obj.ticketId;
+      return value.support_ticket_id != row_obj.support_ticket_id;
     });
   }  
 }

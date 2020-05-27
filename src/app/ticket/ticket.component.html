@@ -1,21 +1,35 @@
 <header-section></header-section>
 <h1>Raised Tickets</h1>
-<table  id="tickets">
-  <ng-container matColumnDef="heading">
-    <th *ngFor="let col of columns">
-      {{col}}
-    </th>  
+<table mat-table [dataSource]="tickets" #mytable class="my-table mat-elevation-z8">
+  <ng-container  matColumnDef="support_ticket_id">
+    <mat-header-cell *matHeaderCellDef>Ticket Id</mat-header-cell>
+    <mat-cell *matCellDef="let Ticket">{{Ticket.support_ticket_id}}</mat-cell>
   </ng-container>
-  <ng-container matColumnDef="data">
-  <tr *ngFor="let ticket of tickets">
-    <td *ngFor="let col of index">
-      {{ticket[col]}}
-    </td>
-    <button (click)="openDialog('Update',ticket)">Edit</button> |
-    <button (click)="openDialog('Delete',ticket)">Delete</button>
-  </tr>
-  </ng-container>   
-  <button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Ticket</button>
-</table>
+  <ng-container  matColumnDef="userId">
+    <mat-header-cell *matHeaderCellDef>Ticket Owner</mat-header-cell>
+    <mat-cell *matCellDef="let Ticket">{{Ticket.userId}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="ticket_subject">
+    <mat-header-cell *matHeaderCellDef>Ticket Subject</mat-header-cell>
+    <mat-cell *matCellDef="let Ticket">{{Ticket.ticket_subject}}</mat-cell>
+  </ng-container>
+  <ng-container  matColumnDef="ticket_description">
+    <mat-header-cell *matHeaderCellDef>Ticket Message</mat-header-cell>
+    <mat-cell *matCellDef="let Ticket">{{Ticket.ticket_description}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let Ticket" class="action-link">
+        <button (click)="openDialog('Update',Ticket)">Edit</button> |
+        <button (click)="openDialog('Delete',Ticket)">Delete</button>
+      </td>
+  </ng-container>
 
+<mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+<mat-row *matRowDef="let row; columns: columns"></mat-row> 
+
+   
+ 
+</table>
+<button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Ticket</button>
 <footer-section></footer-section>
