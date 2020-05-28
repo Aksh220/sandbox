@@ -12,12 +12,12 @@ import { isDataSource } from '@angular/cdk/collections';
 export class TicketComponent implements OnInit {
   constructor(private ticketService : TicketService, public dialog: MatDialog) { }
 
-  public columns = ["support_ticket_id", "userId", "ticket_subject", "ticket_description", "action"];
+  columns = ["support_ticket_id", "userId", "ticket_subject", "ticket_description", "action"];
 
   tickets : Ticket[] = [];
 
   ngOnInit(): void {
-     this.ticketService.getTicket().subscribe((response)=> {this.tickets = response as Ticket[];},(error) => console.log(error))
+     this.ticketService.getTicket().subscribe((response)=> {this.tickets = response},(error) => console.log(error))
   }
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   openDialog(action,obj) {
@@ -40,10 +40,10 @@ export class TicketComponent implements OnInit {
   addRowData(row_obj){
     
     this.tickets.push({
-      support_ticket_id:row_obj,
-      userId:row_obj,
-      ticket_subject:row_obj,
-      ticket_description:row_obj
+      support_ticket_id:row_obj.support_ticket_id,
+      userId:row_obj.userId,
+      ticket_subject:row_obj.ticket_subject,
+      ticket_description:row_obj.ticket_description
     });
     this.table.renderRows();
     

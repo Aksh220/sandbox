@@ -1,11 +1,11 @@
 <h1 mat-dialog-title>Welcome to our Support Center</h1>
   <form  class= "add-ticket">
     <div mat-dialog-content>
-      <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">       
+      <mat-form-field>       
         <input placeholder="TicketId" matInput [(ngModel)]="tickets.support_ticket_id" name="Ticket Id">
       </mat-form-field>      
       <mat-form-field> 
-        <input placeholder="TicketOwner" matInput [(ngModel)]="tickets.userid" name="Ticket Owner">
+        <input placeholder="TicketOwner" matInput [(ngModel)]="tickets.userId" name="Ticket Owner">
       </mat-form-field>
       <mat-form-field>
         <input placeholder="Subject" matInput [(ngModel)]="tickets.ticket_subject" name="Ticket Subject">
@@ -13,9 +13,6 @@
       <mat-form-field>
         <textarea placeholder="Message" matInput [(ngModel)]="tickets.ticket_description " name="Ticket Message"></textarea>
       </mat-form-field>
-      <ng-template #elseTemplate>
-        Sure to delete <b>{{tickets}}</b>?
-      </ng-template>
     </div>
   </form>
 

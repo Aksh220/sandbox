@@ -26,9 +26,7 @@
   </ng-container>
 
 <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
-<mat-row *matRowDef="let row; columns: columns"></mat-row> 
-
-   
+<mat-row *matRowDef="let row; columns: columns"></mat-row>    
  
 </table>
 <button mat-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Ticket</button>
