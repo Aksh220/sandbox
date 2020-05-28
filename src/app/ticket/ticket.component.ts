@@ -38,12 +38,12 @@ export class TicketComponent implements OnInit {
     });
   }
   addRowData(row_obj){
-    var d = new Date();
+    
     this.tickets.push({
-      support_ticket_id:d.getTime(),
-      userId:row_obj.userId,
-      ticket_subject:row_obj.ticket_subject,
-      ticket_description:row_obj.ticket_description
+      support_ticket_id:row_obj,
+      userId:row_obj,
+      ticket_subject:row_obj,
+      ticket_description:row_obj
     });
     this.table.renderRows();
     
@@ -75,7 +75,7 @@ export class DialogBoxComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogBoxComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Ticket) {
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: Ticket){
     console.log(data);
     this.tickets = {...data};
     this.action = this.tickets.action;

@@ -1,21 +1,22 @@
 <h1 mat-dialog-title>Welcome to our Support Center</h1>
   <form  class= "add-ticket">
-    <mat-form-field>
-      <mat-label>Enter Ticket Id</mat-label>
-        <input matInput placeholder="TicketId">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Enter Ticket Owner</mat-label>
-        <input matInput placeholder="TicketOwner">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Enter your Subject</mat-label>
-        <input matInput placeholder="Subject">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Enter your Message</mat-label>
-      <textarea matInput placeholder="Message"></textarea>
-    </mat-form-field>
+    <div mat-dialog-content>
+      <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">       
+        <input placeholder="TicketId" matInput [(ngModel)]="tickets.support_ticket_id" name="Ticket Id">
+      </mat-form-field>      
+      <mat-form-field> 
+        <input placeholder="TicketOwner" matInput [(ngModel)]="tickets.userid" name="Ticket Owner">
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="Subject" matInput [(ngModel)]="tickets.ticket_subject" name="Ticket Subject">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea placeholder="Message" matInput [(ngModel)]="tickets.ticket_description " name="Ticket Message"></textarea>
+      </mat-form-field>
+      <ng-template #elseTemplate>
+        Sure to delete <b>{{tickets}}</b>?
+      </ng-template>
+    </div>
   </form>
 
   <div mat-dialog-actions>
