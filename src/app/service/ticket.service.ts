@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export interface Ticket {
   support_ticket_id: number,
-  userId: string,
+  environment_id: string,
   ticket_subject: string,
   ticket_description:string
 }

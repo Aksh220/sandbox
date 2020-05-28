@@ -12,7 +12,7 @@ import { isDataSource } from '@angular/cdk/collections';
 export class TicketComponent implements OnInit {
   constructor(private ticketService : TicketService, public dialog: MatDialog) { }
 
-  columns = ["support_ticket_id", "userId", "ticket_subject", "ticket_description", "action"];
+  columns = ["support_ticket_id", "environment_id", "ticket_subject", "ticket_description", "action"];
 
   tickets : Ticket[] = [];
 
@@ -37,21 +37,19 @@ export class TicketComponent implements OnInit {
       }
     });
   }
-  addRowData(row_obj){
-    
+  addRowData(row_obj){    
     this.tickets.push({
       support_ticket_id:row_obj.support_ticket_id,
-      userId:row_obj.userId,
+      environment_id:row_obj.environment_id,
       ticket_subject:row_obj.ticket_subject,
       ticket_description:row_obj.ticket_description
     });
-    this.table.renderRows();
-    
+    this.table.renderRows();    
   }
   updateRowData(row_obj){
     this.tickets = this.tickets.filter((value,key)=>{
       if(value.support_ticket_id == row_obj.support_ticket_id){
-        value.userId = row_obj.userId;
+        value.environment_id = row_obj.environment_id;
         value. ticket_subject = row_obj. ticket_subject;
         value.ticket_description = row_obj.ticket_description;
       }
