@@ -20,7 +20,7 @@ header {
   background-color: rgb(18, 0, 119);
 }
 .header-wrapper {
-  padding: 15px 0;
+  padding: 15px 25px;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@ footer {
   box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.15);
 }
 .footer-wrapper {
-  padding: 15px 40px ;
+  padding: 15px 25px;
   display: flex;
   justify-content: space-between;
 }
@@ -60,9 +60,9 @@ footer p {
 h1
 {
   color:  rgb(18, 0, 119);
-  padding: 0 40px;
+  padding: 0 25px;
 }
 table {
   width: 100%;
-  padding: 40px;
+  padding: 25px;
 } 
