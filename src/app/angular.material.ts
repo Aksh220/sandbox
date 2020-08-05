@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Layout
